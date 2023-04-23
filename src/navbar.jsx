@@ -3,9 +3,25 @@ import { NavLink } from 'react-router-dom';
 import {BiRun} from 'react-icons/bi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import styles from './navbar.module.css';
+import { getUsers } from './utils/localStorage';
+import { useNavigate } from 'react-router-dom';
 
 export function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
+
+  const navigate = useNavigate()
+
+
+  const users = getUsers();
+
+  const isLoginExists = users.some( (item)=> (
+    item.isLogin === true
+    // console.log(item)
+  ))
+
+  let itr = users.find( (item)=>{
+    return item.isSubscribed === true
+  })
 
   function handleMenuClick() {
     setShowMenu(!showMenu);
@@ -14,22 +30,29 @@ export function Navbar() {
   function renderMenuLinks() {
     return (
       <div className={styles.menuLinks}>
-        <NavLink className={styles.link} to="/aboutus">
+        <a href='#aboutus' className={styles.link}>AboutUs</a>
+        {/* <NavLink className={styles.link} to="/aboutus">
           AboutUs
-        </NavLink>
-        <NavLink className={styles.link} to="/program">
+        </NavLink> */}
+        <a href='#program' className={styles.link}>Program</a>
+        {/* <NavLink className={styles.link} to="/program">
           Program
-        </NavLink>
-        <NavLink className={styles.link} to="/training">
+        </NavLink> */}
+        <a href='#training' className={styles.link}>Training</a>
+        {/* <NavLink className={styles.link} to="/training">
           Training
-        </NavLink>
-        <NavLink className={styles.link} to="/pricing">
+        </NavLink> */}
+        <a href='#pricing' className={styles.link}>Pricing</a>
+        {/* <NavLink className={styles.link} to="/pricing">
           Pricing
-        </NavLink>
+        </NavLink> */}
         <div className={styles.joinBtn}>
-        <NavLink className={styles.linkJoin} to='login'>
-          Join Us
-        </NavLink>
+        <div className={styles.linkJoin} >
+          
+          {
+            isLoginExists ? itr ? "Subscribed" : <p onClick={()=>navigate('/pricing')}>SubscribeNow</p>  : <p onClick={()=>navigate('/login')}>joinUs</p>
+          }
+        </div>
       </div>
 
       </div>

@@ -10,7 +10,7 @@ export function Training() {
   }
 
   return (
-    <div>
+    <div id="training">
         <div className={styles.meetTeam}>
             <h3 className={styles.teamHead}>Meet Our Team</h3>
             <span className={styles.Line}></span>
@@ -27,7 +27,7 @@ export function Training() {
         )}
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

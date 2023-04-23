@@ -16,10 +16,10 @@ export function Footer() {
         </p>
 
         <div className={style.iconDiv}>
-          <ImFacebook2 className={style.icons} />
-          <BsLinkedin className={style.icons} />
-          <ImWhatsapp className={style.icons} />
-          <ImYoutube className={style.icons} />
+          <a href="https://www.facebook.com" target="_blank"><ImFacebook2 className={style.icons} /></a>
+          <a href="https://www.linkedin.com" target="_blank"><BsLinkedin className={style.icons} /></a>
+          <a href="https://www.whatsapp.com" target="_blank"><ImWhatsapp className={style.icons} /></a>
+          <a href="https://www.youtube.com" target="_blank"><ImYoutube className={style.icons} /></a>
         </div>
       </div>
 

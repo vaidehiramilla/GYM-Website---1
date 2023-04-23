@@ -11,8 +11,11 @@ export function Register() {
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passError, setPassError] = useState("");
-  const [isRegistered, setIsRegistered] = useState("");
-  console.log(isRegistered);
+  const [registered, setRegistered] = useState("");
+
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
+  
   const navigate = useNavigate();
 
   const validateUserName = () => {
@@ -73,19 +76,19 @@ export function Register() {
       const users = getUsers();
       const check = users.some((user) => user.email === email);
 
-      console.log(email);
-
-      console.log(check);
-
       if (check) {
-        setIsRegistered("User already registered");
+        setRegistered("User already registered");
       } else {
         users.push({
+          id:Date.now(),
           fullName,
           email,
           password,
+          isSubscribed: false,
+          isLogin:false
         });
         localStorage.setItem("users", JSON.stringify(users));
+        
         navigate("/login");
       }
     }
@@ -95,11 +98,15 @@ export function Register() {
     setPassword("");
   }
 
+  function handleFormChange() {
+    navigate("/login");
+  }
+
   return (
     <div className={styles.regContainer}>
       <div className={styles.registerContainer}>
       <div className={styles.headRegister}>
-        <p className={styles.isRegistered}>{isRegistered}</p>
+        <p className={styles.isRegistered}>{registered}</p>
         <h1 className={styles.register}>Register</h1>
         </div>
         <form className={styles.regFormContainer} onSubmit={handleSubmit}>
@@ -143,6 +150,12 @@ export function Register() {
 
           <button className={styles.regbtn}>Register</button>
         </form>
+        <h4 className={styles.regfoot}>
+          Already a user?
+          <span className={styles.spanReg} onClick={handleFormChange}>
+            Login here...
+          </span>
+        </h4>
       </div>
     </div>
   );

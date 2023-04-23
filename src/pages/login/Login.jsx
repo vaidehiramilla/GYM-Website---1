@@ -12,6 +12,8 @@ export function Login() {
   const [emailError, setEmailError] = useState("");
   const [match, setMatch] = useState("");
 
+  const [isLogin, setIsLogin] = useState(false);
+
   const navigate = useNavigate();
 
   const users = getUsers();
@@ -66,7 +68,16 @@ export function Login() {
       );
   
       if (details && emailValue && userValue) {
-        navigate("/");
+        alert("You can subscribe in pricing section!")
+        const newUser = users.filter( (item) => {
+          if(item.email === email) {
+            item.isLogin = true
+          }
+          return item;
+        })
+        localStorage.setItem('users', JSON.stringify(newUser))
+        console.log(users)
+        navigate("/pricing");
       } else {
         setMatch("Please Register");
       }
