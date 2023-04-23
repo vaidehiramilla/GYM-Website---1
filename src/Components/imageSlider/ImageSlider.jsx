@@ -24,13 +24,12 @@ export function ImageSlider() {
       ];
       
 
-    const [image, setImage] = useState(imgArr[0]);
+    // const [image, setImage] = useState(imgArr[0]);
     const [index, setIndex] = useState(0);
 
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-          // Increment the current index
           setIndex(currentIndex => (currentIndex + 1) % imgArr.length);
         }, 3000);
 
@@ -38,12 +37,12 @@ export function ImageSlider() {
       }, [index, imgArr.length]);
 
     return (
-        <div className={styles.imgSlider}>
+        <div id='home' className={styles.imgSlider}>
             <img className={styles.img} src={imgArr[index].url} alt='gym'/>
             <div className={styles.imgText}>
                 <h2>{imgArr[index].text}</h2>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }

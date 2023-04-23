@@ -72,6 +72,23 @@
     cursor: pointer;
 }
 
+.regfoot {
+    font-size: 12px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 1.1rem;
+    /* margin-bottom: 2rem; */
+    background-color: rgb(196, 190, 190, .3);
+    color: black;
+}
+
+.spanReg {
+    color: rgb(148, 5, 5);
+    text-decoration: underline;
+    cursor: pointer;
+    background-color: aquamarine;
+}
+
 .errMsgName {
     margin: 0;
     padding: 0;

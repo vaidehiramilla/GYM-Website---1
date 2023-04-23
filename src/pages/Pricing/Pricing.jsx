@@ -1,15 +1,52 @@
 import React from 'react'
 import { Footer } from '../../Components/footer/Footer'
+import { useState } from 'react'
 import Style from './Pricing.module.css'
 import { useNavigate } from 'react-router'
+import { getUsers } from '../../utils/localStorage'
 
 export function Pricing() {
 
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
   const navigate = useNavigate();
+
+  const users = getUsers();
+
+  const isLoginExists = users.some( (item)=> (
+    item.isLogin === true
+    // console.log(item)
+  ))
+
+  function handleSubscribeDay() {
+    alert("Thanks for subscribing")
+    let user = users.filter( (item) => {
+      if(item.isLogin === true) {
+        item.isSubscribed = true
+      }
+      return item;
+    })
+    localStorage.setItem('users',JSON.stringify(user))
+    navigate('/day')
+  }
+
+  function handleSubscribeMonthly() {
+    alert("Thanks for subscribing")
+    let user = users.filter( (item) => {
+      if(item.isLogin === true) {
+        item.isSubscribed = true
+      }
+      return item;
+    })
+    localStorage.setItem('users',JSON.stringify(user))
+    navigate('/monthly')
+  }
+
+  console.log(isLoginExists)
 
   return (
     
-    <div>
+    <div id='pricing'>
 
 <div className={Style.container}>
   
@@ -23,7 +60,13 @@ export function Pricing() {
       ☑️ Free Gym Access <br /> <br />
       ☑️ 24 Hours Access <br />
     </p>
-    <button className={Style.btn}> GET STARTED  </button>
+
+    
+    <button className={Style.btn} >{
+
+isLoginExists ? <p className={Style.btnSub} onClick={handleSubscribeDay}>Subscribe</p> : "Get Started"
+
+}</button>
   </div>
   
 
@@ -39,7 +82,9 @@ export function Pricing() {
     ☑️ 1 Group Class Include  <br /> <br />
     ☑️ 24 Hours Access <br />
     </p>
-    <button className={Style.btns} onClick={()=>navigate('/login')}> GET STARTED </button>
+    <button className={Style.btns} > {
+      isLoginExists ? <p className={Style.btnsSub} onClick={handleSubscribeMonthly}>Subscribe</p> : "Get Started"
+    } </button>
   </div>
   
 
@@ -67,7 +112,7 @@ export function Pricing() {
 </div>
 
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

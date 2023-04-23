@@ -4,9 +4,9 @@ import {Data} from "./Data";
 
 export function Program() {
   return (
-    <>
+    <div id="program">
     <div className={styles.mainContainer}>
-      <h1>Trainer section</h1>
+      <h1>Programs section</h1>
       
       <div className={styles.container}>
         {Data.map((item, index) => {
@@ -18,9 +18,9 @@ export function Program() {
           );
         })}
       </div>
-      <Footer />
+      {/* <Footer /> */}
       </div>
       
-    </>
+    </div>
   );
 }

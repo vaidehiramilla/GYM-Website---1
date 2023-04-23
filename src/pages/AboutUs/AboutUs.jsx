@@ -8,7 +8,7 @@ import video3 from '../../Components/video/video3.mp4'
 export function AboutUs() {
 
   return (
-    <div>
+    <div id='aboutus'>
 
       <div className={styles.aboutus}>
         <div className={styles.left}>
@@ -61,7 +61,7 @@ export function AboutUs() {
 
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
 
     </div>
   )
