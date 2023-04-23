@@ -4,7 +4,7 @@ export function Day() {
 
     return (
         <div>
-            <h1>Day plan</h1>
+            <h1 style={{margin : "100px"}}>Day plan</h1>
         </div>
     );
 }

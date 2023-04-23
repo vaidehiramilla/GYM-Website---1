@@ -5,7 +5,7 @@ export function Monthly() {
 
     return (
         <div>
-            <h1>Monthly plan</h1>
+            <h1 style={{margin : "100px"}}>Monthly plan</h1>
         </div>
     );
 }
