@@ -1,13 +1,10 @@
-import React from 'react'
-import { Footer } from '../../Components/footer/Footer'
-import { useState } from 'react'
 import Style from './Pricing.module.css'
 import { useNavigate } from 'react-router'
 import { getUsers } from '../../utils/localStorage'
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function Pricing() {
-
-  const [isSubscribed, setIsSubscribed] = useState(false);
 
   const navigate = useNavigate();
 
@@ -18,11 +15,18 @@ export function Pricing() {
     // console.log(item)
   ))
 
+  let itr = users.find( (item)=>{
+    return item.isSubscribed === true
+  })
+
   function handleSubscribeDay() {
-    alert("Thanks for subscribing")
+    // alert("Thanks for subscribing")
     let user = users.filter( (item) => {
       if(item.isLogin === true) {
         item.isSubscribed = true
+        toast.success("Subscribed for day pass", {
+          autoClose: 1000
+        })
       }
       return item;
     })
@@ -31,10 +35,13 @@ export function Pricing() {
   }
 
   function handleSubscribeMonthly() {
-    alert("Thanks for subscribing")
+    // alert("Thanks for subscribing")
     let user = users.filter( (item) => {
       if(item.isLogin === true) {
         item.isSubscribed = true
+        toast.success("Subscribed for month", {
+          autoClose: 1000
+        })
       }
       return item;
     })
@@ -64,7 +71,7 @@ export function Pricing() {
     
     <button className={Style.btn} >{
 
-isLoginExists ? <p className={Style.btnSub} onClick={handleSubscribeDay}>Subscribe</p> : "Get Started"
+isLoginExists ? itr ? "Subscribed" : <p className={Style.btnSub} onClick={handleSubscribeDay}>Subscribe</p> : <p className={Style.btnsSub} onClick={()=>navigate('login')}>Get Started</p>
 
 }</button>
   </div>
@@ -83,7 +90,7 @@ isLoginExists ? <p className={Style.btnSub} onClick={handleSubscribeDay}>Subscri
     ☑️ 24 Hours Access <br />
     </p>
     <button className={Style.btns} > {
-      isLoginExists ? <p className={Style.btnsSub} onClick={handleSubscribeMonthly}>Subscribe</p> : "Get Started"
+      isLoginExists ? itr ? "Subscribed" : <p className={Style.btnsSub} onClick={handleSubscribeMonthly}>Subscribe</p> : <p className={Style.btnsSub} onClick={()=>navigate('login')}>Get Started</p>
     } </button>
   </div>
   
@@ -96,7 +103,7 @@ isLoginExists ? <p className={Style.btnSub} onClick={handleSubscribeDay}>Subscri
 
     <p className={Style.p2}>At Gym base we offer wide range of membership with opposite to suit every budget.
       Everything from one Day Pass. Punch Pass to monthly or annual prepaid membership. 
-      What's more. We won't tie you in to a long term contract giving you greater flexibility.
+      What`&apos;`s more. We `&apos;` tie you in to a long term contract giving you greater flexibility.
     </p>
 
       <p className={Style.p3}>Each Plan included </p>
@@ -113,6 +120,7 @@ isLoginExists ? <p className={Style.btnSub} onClick={handleSubscribeDay}>Subscri
 
 
       {/* <Footer /> */}
+      <ToastContainer />
     </div>
   )
 }

@@ -9,11 +9,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 97.5vw;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     font-size: 20px;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  @media screen and (max-width: 768px) {
+    /* .img {
+        width: 120vw;
+    }
+
+    .imgText {
+        width: 114vw;
+    } */
   }

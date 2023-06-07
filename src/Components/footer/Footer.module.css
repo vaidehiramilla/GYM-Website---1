@@ -68,6 +68,11 @@ li {
     color: white;
 }
 
+.navLinks:hover {
+    cursor: pointer;
+    color: yellowgreen;
+}
+
 @media screen and (max-width:768px){
     .container{
         flex-direction: column;
@@ -75,7 +80,7 @@ li {
     }
 
     .footer_title{
-        width:100%;
+        width:78vw;
         height:10vh;
     }
 
@@ -90,6 +95,10 @@ li {
 
     .footer_content ul a{
         margin:0.1rem 0;
+    }
+
+    .para {
+        width: 80vw;
     }
     
 }

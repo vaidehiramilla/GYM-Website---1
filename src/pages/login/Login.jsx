@@ -2,17 +2,16 @@ import styles from "./Login.module.css";
 import { useState } from "react";
 import { getUsers } from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [user, setUser] = useState([]);
 
   const [passError, setPassError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [match, setMatch] = useState("");
-
-  const [isLogin, setIsLogin] = useState(false);
 
   const navigate = useNavigate();
 
@@ -68,18 +67,25 @@ export function Login() {
       );
   
       if (details && emailValue && userValue) {
-        alert("You can subscribe in pricing section!")
+        // alert("You can subscribe in pricing section!")
+        toast.success("successfully loged in", {
+          autoClose: 1000,
+        })
         const newUser = users.filter( (item) => {
           if(item.email === email) {
             item.isLogin = true
           }
           return item;
         })
+        
         localStorage.setItem('users', JSON.stringify(newUser))
         console.log(users)
         navigate("/pricing");
       } else {
-        setMatch("Please Register");
+        toast.warning("Please Register", {
+          autoClose: 1000
+        })
+        // setMatch("Please Register");
       }
     }
     }
@@ -129,6 +135,7 @@ export function Login() {
           </span>
         </h4>
       </div>
+      <ToastContainer />
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import styles from './ImageSlider.module.css';
 import { useEffect, useState } from 'react';
-import { Footer } from '../footer/Footer';
 
 export function ImageSlider() {
 

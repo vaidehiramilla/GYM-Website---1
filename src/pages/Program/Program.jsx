@@ -1,5 +1,5 @@
 import styles from "./Program.module.css";
-import { Footer } from "../../Components/footer/Footer";
+// import { Footer } from "../../Components/footer/Footer";
 import {Data} from "./Data";
 
 export function Program() {
@@ -9,7 +9,7 @@ export function Program() {
       <h1>Programs section</h1>
       
       <div className={styles.container}>
-        {Data.map((item, index) => {
+        {Data.map((item) => {
           return (
             <div className={styles.card} key={item.id}>
               <img src={item.Img} alt="programs" />

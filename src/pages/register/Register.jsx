@@ -2,6 +2,8 @@ import { useState } from "react";
 import { getUsers } from "../../utils/localStorage";
 import { useNavigate } from "react-router-dom";
 import styles from "./Register.module.css";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function Register() {
   const [fullName, setFullName] = useState("");
@@ -13,8 +15,6 @@ export function Register() {
   const [passError, setPassError] = useState("");
   const [registered, setRegistered] = useState("");
 
-  const [isSubscribed, setIsSubscribed] = useState(false);
-  const [isLogin, setIsLogin] = useState(false);
   
   const navigate = useNavigate();
 
@@ -88,7 +88,9 @@ export function Register() {
           isLogin:false
         });
         localStorage.setItem("users", JSON.stringify(users));
-        
+        toast.success("You have registered", {
+          autoClose: 1000
+        })
         navigate("/login");
       }
     }
@@ -107,10 +109,10 @@ export function Register() {
       <div className={styles.registerContainer}>
       <div className={styles.headRegister}>
         <p className={styles.isRegistered}>{registered}</p>
-        <h1 className={styles.register}>Register</h1>
+        <h2 className={styles.register}>Register</h2>
         </div>
         <form className={styles.regFormContainer} onSubmit={handleSubmit}>
-          <label htmlFor="fname"></label>
+          {/* <label htmlFor="fname"></label> */}
           <input
             id="fname"
             type="text"
@@ -124,7 +126,7 @@ export function Register() {
 
           <br />
 
-          <label htmlFor="email"></label>
+          {/* <label htmlFor="email"></label> */}
           <input
             id="email"
             type="email"
@@ -136,7 +138,7 @@ export function Register() {
           <span className={styles.errMsgEmail}>{emailError}</span>
           <br />
 
-          <label htmlFor="pwd"></label>
+          {/* <label htmlFor="pwd"></label> */}
           <input
             id="pwd"
             type="password"
@@ -157,6 +159,7 @@ export function Register() {
           </span>
         </h4>
       </div>
+      <ToastContainer />
     </div>
   );
 }
