@@ -88,9 +88,7 @@ export function Register() {
           isLogin:false
         });
         localStorage.setItem("users", JSON.stringify(users));
-        toast.success("You have registered", {
-          autoClose: 1000
-        })
+        toast.success("You have registered")
         navigate("/login");
       }
     }
