@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll'
 import {BiRun} from 'react-icons/bi';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import styles from './navbar.module.css';
@@ -8,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 
 export function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
+
+  // const [logOut, setLogout] = useState(false);
 
   const navigate = useNavigate()
 
@@ -18,6 +21,16 @@ export function Navbar() {
     item.isLogin === true
     // console.log(item)
   ))
+
+  function handleLogout() {
+    const user = users.filter( (item)=> {
+      item.isLogin = false
+      // item.isSubscribed = false
+      return item
+    })
+    localStorage.setItem('users', JSON.stringify(user))
+    navigate('./')
+  }
 
   let itr = users.find( (item)=>{
     return item.isSubscribed === true
@@ -30,28 +43,51 @@ export function Navbar() {
   function renderMenuLinks() {
     return (
       <div className={styles.menuLinks}>
-        <a href='#aboutus' className={styles.link}>AboutUs</a>
-        {/* <NavLink className={styles.link} to="/aboutus">
-          AboutUs
-        </NavLink> */}
-        <a href='#program' className={styles.link}>Program</a>
-        {/* <NavLink className={styles.link} to="/program">
-          Program
-        </NavLink> */}
-        <a href='#training' className={styles.link}>Training</a>
-        {/* <NavLink className={styles.link} to="/training">
-          Training
-        </NavLink> */}
-        <a href='#pricing' className={styles.link}>Pricing</a>
-        {/* <NavLink className={styles.link} to="/pricing">
-          Pricing
-        </NavLink> */}
+      <Link
+        className={styles.link}
+        to="aboutus"
+        smooth={true}
+        duration={700}
+      >
+        AboutUs
+      </Link>
+      <Link
+        className={styles.link}
+        to="program"
+        smooth={true}
+        duration={700}
+      >
+        Program
+      </Link>
+      <Link
+        className={styles.link}
+        to="training"
+        smooth={true}
+        duration={700}
+      >
+        Training
+      </Link>
+      <Link
+        className={styles.link}
+        to="pricing"
+        smooth={true}
+        duration={700}
+      >
+        Pricing
+      </Link>
         <div className={styles.joinBtn}>
         <div className={styles.linkJoin} >
           
           {
             isLoginExists ? itr ? "Subscribed" : <p onClick={()=>navigate('/pricing')}>SubscribeNow</p>  : <p onClick={()=>navigate('/login')}>joinUs</p>
           }
+        </div>
+        <div >
+          {
+            
+            isLoginExists && <button className={styles.linkJoin2} onClick={handleLogout}>Logout</button>
+
+            }
         </div>
       </div>
 
@@ -62,9 +98,10 @@ export function Navbar() {
   return (
     <div className={styles.container}>
       <div className={styles.gymContainer}>
-        <NavLink className={styles.linkGym} to="/">
-        <BiRun />Waves Gym 
-        </NavLink>
+        <Link className={styles.linkGym} to="/" smooth={true}
+        duration={700}>
+        <BiRun /><span onClick={()=>navigate('/')}>Waves Gym</span> 
+        </Link>
       </div>
       <div className={styles.linkContainer}>
         <div className={styles.desktopLinks}>{renderMenuLinks()}</div>

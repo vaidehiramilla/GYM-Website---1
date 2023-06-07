@@ -12,7 +12,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(196, 190, 190, .3);
+    /* background-color: rgb(196, 190, 190, .3); */
     gap: .8rem;
 }
 
@@ -66,7 +66,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: 1.1rem;
     /* margin-bottom: 2rem; */
-    background-color: rgb(196, 190, 190, .3);
+    /* background-color: rgb(196, 190, 190, .3); */
     color: black;
 }
 
@@ -108,4 +108,59 @@ img {
 .match {
     color: red;
     text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .loginContainer {
+        border: 1px solid;
+        padding: 3rem;
+        border-radius: 1rem;
+        background-color: rgb(196, 190, 190, .3);
+        height: fit-content;
+        width: 50vw;
+    }
+
+    .loginInput {
+        width: 50vw;
+        height: 4vh;
+        border: none;
+        border-radius: 1rem;
+        background-color: rgba(250, 242, 242);
+        padding: .3rem;
+    }
+
+    .errLogEmail {
+        margin: 0;
+        padding: 0;
+        width: fit-content;
+        background-color: rgb(107, 141, 155, 0.1);
+        color: red;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .errLogPass {
+        margin: 0;
+        padding: 0;
+        width: fit-content;
+        color: red;
+        background-color: rgb(107, 141, 155, 0.1);
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .spanReg {
+        color: rgb(148, 5, 5);
+        text-decoration: underline;
+        cursor: pointer;
+        background-color: aquamarine;
+    }
+
+    .regfoot {
+        font-size: 10px;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin-top: 1.1rem;
+        /* margin-bottom: 2rem; */
+        /* background-color: rgb(196, 190, 190, .3); */
+        color: black;
+    }
 }

@@ -10,14 +10,16 @@ export function Home() {
 
 
     return (
-        <div id='home'>
+        <div id='home' className={styles.container}>
             {/* <h1>Home Page</h1> */}
             <ImageSlider />
             <AboutUs />
             <Program />
+            <div>
             <Training />
             <Pricing />
-            <Footer />
+            <Footer />  
+            </div>
         </div>
     );
 }

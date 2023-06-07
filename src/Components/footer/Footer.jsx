@@ -1,10 +1,11 @@
-import React from "react";
 import style from "./Footer.module.css";
 import { ImFacebook2, ImYoutube } from "react-icons/im";
 import { BsLinkedin } from "react-icons/bs";
 import { ImWhatsapp } from "react-icons/im";
+import { useNavigate } from "react-router-dom";
 
 export function Footer() {
+  const navigate = useNavigate();
   return (
     <div className={style.container}>
       <div className={style.footer_title}>
@@ -16,34 +17,34 @@ export function Footer() {
         </p>
 
         <div className={style.iconDiv}>
-          <a href="https://www.facebook.com" target="_blank"><ImFacebook2 className={style.icons} /></a>
-          <a href="https://www.linkedin.com" target="_blank"><BsLinkedin className={style.icons} /></a>
-          <a href="https://www.whatsapp.com" target="_blank"><ImWhatsapp className={style.icons} /></a>
-          <a href="https://www.youtube.com" target="_blank"><ImYoutube className={style.icons} /></a>
-        </div>
-      </div>
+          <a href="https://www.facebook.com" rel="noreferrer" target="_blank"><ImFacebook2 className={style.icons} /></a>
+          <a href="https://www.linkedin.com" rel="noreferrer" target="_blank"><BsLinkedin className={style.icons} /></a>
+          <a href="https://www.whatsapp.com" rel="noreferrer" target="_blank"><ImWhatsapp className={style.icons} /></a>
+          <a href="https://www.youtube.com"  rel="noreferrer" target="_blank"><ImYoutube className={style.icons} /></a>
+        </div >
+      </div > 
 
       <div className={style.footer_content}>
         <ul>
-          <li>Home</li>
-          <li>About </li>
-          <li>Program</li>
-          <li>Training </li>
-          <li>Pricing </li>
+          <li className={style.navLinks} onClick={()=>navigate('/')}>Home</li>
+          <li className={style.navLinks} onClick={()=>navigate('/aboutus')}>About </li>
+          <li className={style.navLinks} onClick={()=>navigate('/program')}>Program</li>
+          <li className={style.navLinks} onClick={()=>navigate('/training')}>Training </li>
+          <li className={style.navLinks} onClick={()=>navigate('/pricing')}>Pricing </li>
         </ul>
         <ul>
-          <li>Our Team</li>
-          <li>Careers</li>
-          <li>Testimonials</li>
-          <li>Work Culture</li>
-          <li>Blogs</li>
+          <li className={style.navLinks}>Our Team</li>
+          <li className={style.navLinks}>Careers</li>
+          <li className={style.navLinks}>Testimonials</li>
+          <li className={style.navLinks}>Work Culture</li>
+          <li className={style.navLinks}>Blogs</li>
         </ul>
         <ul>
-          <li>Press Room</li>
-          <li>Events</li>
-          <li>Amazing Offers</li>
-          <li>Group Program</li>
-          <li>Gallery</li>
+          <li className={style.navLinks}>Press Room</li>
+          <li className={style.navLinks}>Events</li>
+          <li className={style.navLinks}>Amazing Offers</li>
+          <li className={style.navLinks}>Group Program</li>
+          <li className={style.navLinks}>Gallery</li>
         </ul>
       </div>
     </div>

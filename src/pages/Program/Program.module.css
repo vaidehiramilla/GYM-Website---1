@@ -1,7 +1,7 @@
 * {
     margin: "0";
     padding: "0";
-    background-color: black;
+    /* background-color: black; */
   }
 
   .container {
@@ -11,7 +11,7 @@
     /* overflow-x: scroll; */
     overflow: auto;
     scroll-behavior: smooth;
-    /* background-color: black; */
+    background-color: black;
   }
 
   .mainContainer {
@@ -56,12 +56,14 @@
 
   @media screen and (max-width: 768px) {
     .container {
-        flex-direction: column;
+        /* flex-direction: column; */
     }
     .card {
-        width: 100vw;
+        width: 97.5vw;
     }
     img {
-        width: 90vw;
+        /* width: 20vw; */
+        height: 40vh;
+        min-width: 80vw;
     }
   }

@@ -1,7 +1,7 @@
 .container {
     display: flex;
     border: 1px solid;
-    width: 99vw;
+    width: 97.5vw;
     height: 10vh;
     background-color: black;
     opacity: .7;
@@ -10,6 +10,7 @@
     justify-content: space-around;
     position: fixed;
 }
+
 
 .gymContainer {
     display: flex;
@@ -21,9 +22,9 @@
 .menuLinks {
     display: flex;
     /* flex: 1; */
+    align-items: center;
     gap: 2rem;
     margin-left: 1rem;
-    
 }
 
 .link {
@@ -31,6 +32,7 @@
     color: white;
     font-size: 1rem;
     font-weight: 700;
+    cursor: pointer;
     /* background-color: antiquewhite; */
     gap: 2rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -44,6 +46,7 @@
 
 .linkGym {
   font-weight: 900;
+  cursor: pointer;
 }
 
 .gymIcon {
@@ -51,23 +54,39 @@
 }
 
 .joinBtn {
-  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  /* background-color: antiquewhite; */
 }
 
 
 .linkJoin {
-    background-color: red;
-    padding: 0.3rem;
-    border-radius: .4rem;
+  background-color: red;
+  padding: 0.3rem;
+  border-radius: .4rem;
+}
+
+.linkJoin2 {
+  display: flex;
+  align-items: center;
+  background-color: red;
+  padding: 0.3rem;
+  border-radius: .4rem;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .linkJoin:hover {
-    color: rgb(128, 32, 99);
+    color: rgb(51, 248, 12);
+    cursor: pointer;
 }
 
 .hamburger {
     font-size: 2rem;
-    color: rgb(20, 20, 20);
+    color: rgb(248, 243, 243);
     cursor: pointer;
   }
   
@@ -83,11 +102,29 @@
     color: green;
   }
 
+  .logout {
+    border: none;
+    background-color: red;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
 
    @media screen and (max-width: 768px) {
 
     .linkContainer {
       flex-direction: column;
+    }
+
+    .joinBtn {
+      flex-direction: column;
+    }
+
+    .menuLinks {
+      /* width: 119vw; */
+      right: 5;
     }
   
     .link {
@@ -104,11 +141,13 @@
     .mobileMenu {
       display: block;
       position: relative;
+      right: 20%;
     }
 
     .hamburger {
       position: absolute;
       top: 50%;
+      
       transform: translateY(-50%);
     }
   
